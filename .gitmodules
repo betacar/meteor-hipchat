@@ -1,0 +1,4 @@
+[submodule "hipchat-notify"]
+	path = hipchat-notify.js
+	url = https://github.com/flesch/hipchat-notify.js.git
+	branch = master
