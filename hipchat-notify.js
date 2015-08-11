@@ -9,27 +9,27 @@ HipChatNotify = function(room, token) {
   return this;
 };
 
-HipChatNotify.prototype.info = function(message, cb) {
-  return this._post(message, 'gray', cb);
+HipChatNotify.prototype.info = function(message) {
+  return this._post(message, 'gray');
 };
 
-HipChatNotify.prototype.warning = function(message, cb) {
-  return this._post(message, 'yellow', cb);
+HipChatNotify.prototype.warning = function(message) {
+  return this._post(message, 'yellow');
 };
 
-HipChatNotify.prototype.success = function(message, cb) {
-  return this._post(message, 'green', cb);
+HipChatNotify.prototype.success = function(message) {
+  return this._post(message, 'green');
 };
 
-HipChatNotify.prototype.error = function(message, cb) {
-  return this._post(message, 'red', cb);
+HipChatNotify.prototype.error = function(message) {
+  return this._post(message, 'red');
 };
 
-HipChatNotify.prototype.misc = function(message, cb) {
-  return this._post(message, 'purple', cb);
+HipChatNotify.prototype.misc = function(message) {
+  return this._post(message, 'purple');
 };
 
-HipChatNotify.prototype._post = function(data, color, cb) {
+HipChatNotify.prototype._post = function(data, color) {
   var body = typeof data === 'string' ? {message: data} : data;
   var url = this.host + '/room/' + this.room + '/notification';
 
@@ -40,14 +40,8 @@ HipChatNotify.prototype._post = function(data, color, cb) {
   return HTTP.post(url, {
     data: body,
     headers: {
-      'content-type': 'application/json'
-    },
-    auth: {
-      bearer: this.token
+      'content-type': 'application/json',
+      'authorization': 'Bearer ' + this.token
     }
-  }, function(error, response) {
-    if (cb) {
-      return cb(error, response);
-    };
   });
 };

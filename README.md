@@ -41,7 +41,7 @@ The package exports `HipChatNotify` as global variable in the server. It require
 var hipchat = new HipChatNotify(561156, 'abcdefghijklmnñopqrstuvwxyz');
 ```
 
-By default, all API requests are synchronous. But you can also pass a callback to notification methods.
+By default, all API requests are synchronous.
 
 ### Notification methods
 [HipChat's room notification API](https://www.hipchat.com/docs/apiv2/method/send_room_notification) allows 6 different notification colors: yellow, green, red, purple, gray, and random.
