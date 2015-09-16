@@ -47,7 +47,7 @@ Tinytest.add('Sends gray a notification color using #info method', function(test
     test.equal(url, 'https://api.hipchat.com/v2/room/561156/notification');
     test.equal(options.data.color, 'gray');
 
-    test.equal(options.auth.bearer, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
+    test.equal(options.headers.authorization, 'Bearer IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
   };
   var hipchat = new HipChatNotify(561156, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen');
   hipchat.info('Tyrion demads trial by combat!');
@@ -59,7 +59,7 @@ Tinytest.add('Sends yellow a notification color using #warning method', function
     test.equal(options.data.color, 'yellow');
     test.isTrue(options.data.notify);
 
-    test.equal(options.auth.bearer, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
+    test.equal(options.headers.authorization, 'Bearer IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
   };
   var hipchat = new HipChatNotify(561156, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen');
   hipchat.warning('Tyrion demads trial by combat!');
@@ -71,7 +71,7 @@ Tinytest.add('Sends green a notification color using #success method', function(
     test.equal(options.data.color, 'green');
     test.isTrue(options.data.notify);
 
-    test.equal(options.auth.bearer, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
+    test.equal(options.headers.authorization, 'Bearer IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
   };
   var hipchat = new HipChatNotify(561156, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen');
   hipchat.success('Tyrion demads trial by combat!');
@@ -82,8 +82,9 @@ Tinytest.add('Sends red a notification color using #error method', function(test
     test.equal(url, 'https://api.hipchat.com/v2/room/561156/notification');
     test.equal(options.data.color, 'red');
     test.isTrue(options.data.notify);
+    console.log(options)
 
-    test.equal(options.auth.bearer, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
+    test.equal(options.headers.authorization, 'Bearer IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
   };
   var hipchat = new HipChatNotify(561156, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen');
   hipchat.error('Tyrion demads trial by combat!');
@@ -95,7 +96,7 @@ Tinytest.add('Sends purple a notification color using #misc method', function(te
     test.equal(options.data.color, 'purple');
     test.isTrue(options.data.notify);
 
-    test.equal(options.auth.bearer, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
+    test.equal(options.headers.authorization, 'Bearer IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
   };
   var hipchat = new HipChatNotify(561156, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen');
   hipchat.misc('Tyrion demads trial by combat!');
@@ -107,7 +108,7 @@ Tinytest.add('Sends the payload attributes, with a plain text message', function
     test.equal(options.data.message, 'Tyrion demads trial by combat!');
     test.equal(options.data.message_format, 'text');
 
-    test.equal(options.auth.bearer, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
+    test.equal(options.headers.authorization, 'Bearer IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
   };
   var hipchat = new HipChatNotify(561156, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen');
   hipchat.info('Tyrion demads trial by combat!');
@@ -119,7 +120,7 @@ Tinytest.add('Sends the payload attributes, with a HTML message', function(test)
     test.equal(options.data.message, '<strong>Tyrion</strong> demads trial by combat!');
     test.equal(options.data.message_format, 'html');
 
-    test.equal(options.auth.bearer, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
+    test.equal(options.headers.authorization, 'Bearer IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
   };
   var hipchat = new HipChatNotify(561156, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen');
   hipchat.info('<strong>Tyrion</strong> demads trial by combat!');
@@ -131,7 +132,7 @@ Tinytest.add('Sends the payload attributes, with a object message', function(tes
     test.equal(options.data.message, 'Tyrion demads trial by combat!');
     test.isFalse(options.data.notify);
 
-    test.equal(options.auth.bearer, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
+    test.equal(options.headers.authorization, 'Bearer IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
   };
   var hipchat = new HipChatNotify(561156, 'IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen');
   hipchat.info({
