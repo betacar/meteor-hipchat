@@ -1,6 +1,6 @@
 Package.describe({
   name: 'betacar:hipchat-notify',
-  version: '1.1.1',
+  version: '1.1.2',
   summary: 'HipChat notifications for Meteor apps',
   git: 'git://github.com/betacar/meteor-hipchat.git',
   documentation: 'README.md',

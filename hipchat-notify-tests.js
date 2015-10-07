@@ -38,9 +38,11 @@ Tinytest.add('Takes the HipChat host from the ENV', function(test) {
 });
 
 // FIXME
-// Tinytest.add('HipChatNotify throws exception when room ID or token are not defined', function (test) {
-//   test.exception(new HipChatNotify());
-// });
+Tinytest.add("HipChatNotify sets the room and token values as null when they're not defined in the constructor", function (test) {
+  var hipChat = new HipChatNotify();
+  test.equal(hipChat.room, null);
+  test.equal(hipChat.token, null);
+});
 
 Tinytest.add('Sends gray a notification color using #info method', function(test) {
   HTTP.post = function(url, options) {
@@ -82,7 +84,6 @@ Tinytest.add('Sends red a notification color using #error method', function(test
     test.equal(url, 'https://api.hipchat.com/v2/room/561156/notification');
     test.equal(options.data.color, 'red');
     test.isTrue(options.data.notify);
-    console.log(options)
 
     test.equal(options.headers.authorization, 'Bearer IamthewatcheronthewallsIamtheshieldthatguardstherealmsofmen')
   };

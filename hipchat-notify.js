@@ -5,7 +5,17 @@ HipChatNotify = function(room, token) {
   this.token = token || process.env.HIPCHAT_TOKEN;
   this.host  = process.env.HIPCHAT_HOST || 'https://api.hipchat.com/v2';
 
-  if (!this.room || !this.token) throw 'Please specify a room name or ID and auth token';
+  if (!this.room || !this.token) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('[HIPCHAT-NOTIFY] Without the room name/ID and auth token the package will not send notifications.');
+      this.room = null;
+      this.token = null;
+      return;
+    } else {
+      throw new Error('[HIPCHAT-NOTIFY] Please provide a HipChat room name/ID and auth token.');
+    }
+  }
+
   return this;
 };
 
@@ -31,6 +41,12 @@ HipChatNotify.prototype.misc = function(message) {
 
 HipChatNotify.prototype._post = function(data, color) {
   var body = typeof data === 'string' ? {message: data} : data;
+
+  if ((!this.room || !this.token) && process.env.NODE_ENV !== 'production') {
+    console.log('[HIPCHAT-NOTIFY] Without the room name/ID and auth token the package will not send notifications.');
+    return;
+  }
+
   var url = this.host + '/room/' + this.room + '/notification';
 
   body.color = color || 'gray';
